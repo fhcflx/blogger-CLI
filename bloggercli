@@ -8,13 +8,13 @@ from oauth2client.file import Storage
 blogId = 0 # put your blog ID here
 isDraft = True # Don't change this unless you are prepared to modify the script
 postfile = ''
-title = 'Default Title' # Change this to the default title you prefer
+title = 'Minha nova postagem' # Change this to the default title you prefer
 
 # comma delimited list of labels for the post.
 # If you set a default list it will be overwritten
 # if lables are supplied in the command line args
 # otherwise the default list is used
-labels = 'linux, rocks'
+labels = 'mac osx, blogger, CLI'
 
 # At a minimum we must include the file containing our blog post
 if(len(sys.argv) < 2):
