@@ -21,6 +21,26 @@ Don't forget to edit the following configurable variables in bloggercli:
 2. blogId  The id of your blog
 3. title   The default title to use if one is not specified
 
+#USAGE
+
+Just copy bloggercli to /usr/local/bin and put this folder in your $PATH.
+Example: 
+```
+$ mkdir /my/blog/folder
+$ cd /my/blog/folder
+$ echo "# my first blog post in Markdown" >> newpost.txt
+$ pandoc -f markdown_strict -t html -o newpost.html newpost.txt
+$ bloggercli -f "A blogger post using Markdown" -l "Markdown, Blogger, CLI"
+```
+To use it in Mac OS X you must have Python and dependencies installed.
+Install Python in Mac OS X: follow [these](http://www.marinamele.com/python) instructions.
+Install minimal dependencies:
+```
+$ pip install httplib2
+$ pip install oauth2client
+$ pip install --upgrade google-api-python-client
+```
+
 #TIPS
 1. You can use html2text to view the post in the command line 
 2. or simply fire it up in a browser to see if formating is correct.
