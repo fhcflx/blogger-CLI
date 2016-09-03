@@ -1,4 +1,4 @@
-#Cranky Blogger CLI
+#Blogger CLI (Cranky Blogger CLI)
 
 This script interacts with the Google Blogger API V3. Its purpose is to enable
 command line blog posting. Its functions are as follows
@@ -9,13 +9,13 @@ command line blog posting. Its functions are as follows
 4. -l "label1, label2"  to set labels
 
 Before you can run the program you will need to login into the google API
-console setup an app and download a blogger key. Put the .json file in the same
+console setup an app and download a blogger key. Save the file as client_id.json in the same
 directory as the script.
 
 When you first run the program a web browser will launch and you will give the
 app permission to access your blogger account.
 
-Don't forget to edit the following configurable variables
+Don't forget to edit the following configurable variables in bloggercli:
 
 1. labels  defaults are used when no labels are given on CLI
 2. blogId  The id of your blog
@@ -26,7 +26,8 @@ Don't forget to edit the following configurable variables
 2. or simply fire it up in a browser to see if formating is correct.
 3. Don't forget to use the spellcheck in your editor :)
 4. Your post should be a plain html file
-5. Please enjoy and I welcome public contributions!
+5. Try writing a .txt file in Markdown and converting it with pandoc - it's fun!
+6. Please enjoy and I welcome public contributions!
 
 #TODO
 Implement editing and deleting of blog posts
@@ -35,3 +36,5 @@ Implement editing and deleting of blog posts
 #LICENSE
 Do what ever you want with it. No WARRANTY. If you share a copy with someone
 else, it must be under the same license.
+
+Forked from [Adept-/crankyblogger](https://github.com/Adept-/crankyblogger)
