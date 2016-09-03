@@ -34,6 +34,8 @@ for o, a in myopts:
         title = a
     elif o == '-l':
         labels = a
+    elif o == '-pid'
+        postId = a
 
 # If we want to publish we must supply a title
 if(isDraft == False and title == 'Default Title'):
@@ -67,33 +69,44 @@ else:
 # Initialize the blogger service and get the blog
 blogger_service = build('blogger', 'v3', http=http_auth)
 
-# Open file for reading
-try:
-    f = open(postfile, 'r')
-except:
-    print("Error open file. Aborting...")
-    sys.exit()
+if(os.path.exists('postId') == False):
 
-#build a label list
-labels_list = labels.split(',')
+# Open file for reading
+    try:
+        f = open(postfile, 'r')
+    except:
+        print("Error open file. Aborting...")
+        sys.exit()
+
+    #build a label list
+    labels_list = labels.split(',')
 
 #build body object
-body = {
-        "content": f.read(),
-        "title": title,
-        "labels": labels_list
-        }
+    body = {
+            "content": f.read(),
+            "title": title,
+            "labels": labels_list
+            }
 #Insert the post
-try:
-    post = blogger_service.posts().insert(blogId=blogId, body=body, isDraft=isDraft).execute()
-except:
-    print("Something went wrong uploading this post")
-    sys.exit()
+    try:
+        post = blogger_service.posts().insert(blogId=blogId, body=body, isDraft=isDraft).execute()
+    except:
+        print("Something went wrong uploading this post")
+        sys.exit()
 
-print("Title: %s" % post['title'])
-print("Is Draft: %s" % isDraft)
-if(isDraft == False):
+    print("Title: %s" % post['title'])
+    print("Is Draft: %s" % isDraft)
+    if(isDraft == False):
+        print("URL: %s" % post['url'])
+    print("Labels: %s" % post['labels'])
+
+else:
+    try:
+    post = service.posts().update(blogId=blogId, postId=postId, body=body, publish=True).execute(credentials.authorize(Http()))
+    except:
+        print("Something went wrong updating this post")
+        sys.exit()
+        
+    print("Title: %s" % post['title'])
     print("URL: %s" % post['url'])
-print("Labels: %s" % post['labels'])
-
-
+    print("Labels: %s" % post['labels'])    
