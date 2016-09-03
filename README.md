@@ -30,7 +30,7 @@ $ mkdir /my/blog/folder
 $ cd /my/blog/folder
 $ echo "# my first blog post in Markdown" >> newpost.txt
 $ pandoc -f markdown_strict -t html -o newpost.html newpost.txt
-$ bloggercli -f "A blogger post using Markdown" -l "Markdown, Blogger, CLI"
+$ bloggercli -f "newpost.html" -t "A blogger post using Markdown" -l "Markdown, Blogger, CLI"
 ```
 To use it in Mac OS X you must have Python and dependencies installed.
 Install Python in Mac OS X: follow [these](http://www.marinamele.com/python) instructions.
