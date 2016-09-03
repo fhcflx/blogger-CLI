@@ -23,7 +23,7 @@ Don't forget to edit the following configurable variables in bloggercli:
 
 #USAGE
 
-Just copy bloggercli to /usr/local/bin and put this folder in your $PATH.
+Just copy *bloggercli* to /usr/local/bin and put this folder in your $PATH.
 Example: 
 ```
 $ mkdir /my/blog/folder
