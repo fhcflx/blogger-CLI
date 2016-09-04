@@ -9,10 +9,11 @@ blogId = 0 # put your blog ID here
 isDraft = True # Don't change this unless you are prepared to modify the script
 postfile = ''
 title = 'Minha nova postagem' # Change this to the default title you prefer
+postId = ''
 
 # comma delimited list of labels for the post.
 # If you set a default list it will be overwritten
-# if lables are supplied in the command line args
+# if labels are supplied in the command line args
 # otherwise the default list is used
 labels = 'mac os x, blogger, CLI'
 
@@ -24,7 +25,7 @@ if(len(sys.argv) < 2):
     sys.exit()
  
 # Handle arguments
-myopts, args = getopt.getopt(sys.argv[1:], "f:t:l:", ['publish'])
+myopts, args = getopt.getopt(sys.argv[1:], "f:t:l:p:", ['publish'])
 for o, a in myopts:
     if o == '-f':
         postfile = a
@@ -34,11 +35,11 @@ for o, a in myopts:
         title = a
     elif o == '-l':
         labels = a
-    elif o == '-pid'
+    elif o == '-p'
         postId = a
 
 # If we want to publish we must supply a title
-if(isDraft == False and title == 'Default Title'):
+if(isDraft == False and title == 'Minha nova postagem'):
     print("You must provide a title if you want to publish")
     sys.exit()
 
@@ -69,24 +70,25 @@ else:
 # Initialize the blogger service and get the blog
 blogger_service = build('blogger', 'v3', http=http_auth)
 
-if(os.path.exists('postId') == False):
-
 # Open file for reading
-    try:
-        f = open(postfile, 'r')
-    except:
-        print("Error open file. Aborting...")
-        sys.exit()
+try:
+    f = open(postfile, 'r')
+except:
+    print("Error open file. Aborting...")
+    sys.exit()
 
-    #build a label list
-    labels_list = labels.split(',')
+#build a label list
+labels_list = labels.split(',')
 
 #build body object
-    body = {
-            "content": f.read(),
-            "title": title,
-            "labels": labels_list
-            }
+body = {
+        "content": f.read(),
+        "title": title,
+        "labels": labels_list
+        }
+
+if(os.path.exists('postId') == False):
+
 #Insert the post
     try:
         post = blogger_service.posts().insert(blogId=blogId, body=body, isDraft=isDraft).execute()
@@ -102,7 +104,7 @@ if(os.path.exists('postId') == False):
 
 else:
     try:
-    post = service.posts().update(blogId=blogId, postId=postId, body=body, publish=True).execute(credentials.authorize(Http()))
+        post = service.posts().update(blogId=blogId, postId=postId, body=body, publish=True).execute()
     except:
         print("Something went wrong updating this post")
         sys.exit()
