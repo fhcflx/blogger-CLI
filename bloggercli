@@ -98,6 +98,7 @@ if(os.path.exists('postId') == False):
 
     print("Title: %s" % post['title'])
     print("Is Draft: %s" % isDraft)
+    print("Post ID: %s" % post['id'])
     if(isDraft == False):
         print("URL: %s" % post['url'])
     print("Labels: %s" % post['labels'])
