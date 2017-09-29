@@ -3,10 +3,10 @@
 This script interacts with the Google Blogger API V3. Its purpose is to enable
 command line blog posting. Its functions are as follows
 
- 1. -f "Filename"        is required
- 2. --publish            sets the post to publish immediatly, the default is draft
- 3. -t "My topic"        Sets the topic and is required when --publish is present
- 4. -l "label1, label2"  to set labels
+ 1. `-f` "Filename"        is required
+ 2. `--publish`            sets the post to publish immediatly, the default is draft
+ 3. `-t` "My topic"        Sets the topic and is required when --publish is present
+ 4. `-l` "label1, label2"  to set labels
 
 Before you can run the program you will need to login into the google API
 console setup an app and download a blogger key. Save the file as client_id.json in the same
